@@ -4,7 +4,7 @@
 _name=ImHex
 pkgname=${_name,,}
 pkgver=1.35.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
@@ -24,7 +24,7 @@ sha256sums=('371c36f57c82b36e44069c91448891d1f0795962604246539f9ae38f330c11af'
             '39b660b168f06fc80a990a85fca474a07fbd135530779ea16aba9c6587f4fa14')
 b2sums=('ebafcda5c873f87945f3d0135615932f545717988920086dd2f09e6ca1c62fda88f272f9ab6a2dae43db49083c9c0c5b6842c55d0c2d2ff667e3f49b84a01097'
         '5f89d35c375d5dbe4d1e52ea5c41d86225aa6b5c76a960f430a5a32f94dd68e7ed8cc2fffdd7a3e7dec11f740ef3e226bd52ac3b1d461c0cc9af074a5b44f63d')
-options=(lto strip)
+options=(lto !strip)
 
 build() {
   cd "${srcdir}/${_name}"
