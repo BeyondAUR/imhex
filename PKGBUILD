@@ -3,8 +3,8 @@
 
 _name=ImHex
 pkgname=${_name,,}
-pkgver=1.35.3
-pkgrel=2
+pkgver=1.35.4
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
@@ -13,7 +13,7 @@ depends=('glfw' 'mbedtls' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal'
          'fmt' 'yara' 'capstone')
 makedepends=('cmake'
-             'llvm' 'librsvg' 'nlohmann-json'
+             'llvm' 'librsvg' 'nlohmann-json' 'libxrandr'
              'python' 'cli11' 'dotnet-runtime')
 optdepends=('dotnet-runtime: support for .NET scripts')
 provides=('imhex-patterns')
