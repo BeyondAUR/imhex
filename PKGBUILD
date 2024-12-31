@@ -3,7 +3,7 @@
 
 _name=ImHex
 pkgname=${_name,,}
-pkgver=1.35.4
+pkgver=1.36.2
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
@@ -20,8 +20,8 @@ provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v$pkgver/Full.Sources.tar.gz"
 "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
-sha256sums=('987188df511a01dca407c4fd398a9dbc805ef82cdf044ea27da57ec343c7d6df'
-            '10df85b64b4c14945e43ad14b3ff95cda9ba23e47f4559b5429c2dc733fe23ed')
+sha256sums=('29bed22dae537b83ac4cce905352b4a1c5342862a67cad5575c58ff41f5847f7'
+            'd1555d142347ddf576e5c0b1a19050ae168e8d174b206d269a9e84e07d2515c9')
 options=(lto !strip)
 
 build() {
