@@ -10,9 +10,9 @@ url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 depends=('glfw' 'mbedtls' 'curl' 'dbus'
-         'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal'
+         'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal' 'fontconfig'
          'fmt' 'yara' 'capstone')
-makedepends=('cmake'
+makedepends=('git' 'cmake'
              'llvm' 'librsvg' 'nlohmann-json' 'libxrandr'
              'python' 'cli11' 'dotnet-runtime')
 optdepends=('dotnet-runtime: support for .NET scripts')
