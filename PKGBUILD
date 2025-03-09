@@ -63,7 +63,7 @@ package() {
     "$srcdir/ImHex-Patterns-ImHex-v$pkgver"/{constants,encodings,includes,magic,nodes,patterns,plugins,scripts,tests,themes,tips,yara}
 
   # Desktop file(s)
-  install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/imhex.png"
+  install -Dm0644 "resources/icon.svg" "$pkgdir/usr/share/pixmaps/imhex.svg"
 
   # Documentation
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
