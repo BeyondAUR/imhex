@@ -27,7 +27,7 @@ options=(!lto)
 build() {
   cd "${srcdir}/${_name}"
 
-  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override"
+  export CXXFLAGS="$CXXFLAGS -Wno-deprecated"
 
   cmake -B build -S "." \
     -Wno-dev \
