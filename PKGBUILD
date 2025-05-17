@@ -45,7 +45,8 @@ build() {
     -D USE_SYSTEM_NLOHMANN_JSON=ON \
     -D USE_SYSTEM_CAPSTONE=ON \
     -D USE_SYSTEM_CLI11=ON \
-    -D IMHEX_VERSION="$pkgver"
+    -D IMHEX_VERSION="$pkgver" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.10
 
   cmake --build build
 }
