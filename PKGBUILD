@@ -28,6 +28,7 @@ build() {
   cd "${srcdir}/${_name}"
 
   cmake -B build -S "." \
+    -Wno-deprecated-declarations \
     -Wno-deprecated \
     -Wno-dev \
     -D CMAKE_BUILD_TYPE=Release \
