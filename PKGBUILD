@@ -27,9 +27,8 @@ options=(!lto)
 build() {
   cd "${srcdir}/${_name}"
 
-  export CXXFLAGS="$CXXFLAGS -Wno-deprecated"
-
   cmake -B build -S "." \
+    -Wno-deprecated \
     -Wno-dev \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
@@ -46,7 +45,7 @@ build() {
     -D USE_SYSTEM_CAPSTONE=ON \
     -D USE_SYSTEM_CLI11=ON \
     -D IMHEX_VERSION="$pkgver" \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.10
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.10
 
   cmake --build build
 }
