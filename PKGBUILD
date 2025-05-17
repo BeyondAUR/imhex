@@ -4,7 +4,7 @@
 _name=ImHex
 pkgname=${_name,,}
 pkgver=1.37.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/down
 "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
 sha256sums=('711481cc8dfc368d1b88f5d3e8a44d65f23fa43eb9db092599924f3a4cf1aaa2'
             '541eddc8cc427d1aeb749bc455911fccc87f64a7784bd4bbc35ecb7b56c03ad5')
-options=(lto !strip)
+options=(lto strip)
 
 build() {
   cd "${srcdir}/${_name}"
@@ -36,7 +36,7 @@ build() {
     -D CMAKE_SKIP_RPATH=ON \
     -D IMHEX_OFFLINE_BUILD=ON \
     -D IMHEX_IGNORE_BAD_CLONE=ON \
-    -D IMHEX_STRIP_RELEASE=OFF \
+    -D IMHEX_STRIP_RELEASE=ON \
     -D IMHEX_STRICT_WARNINGS=OFF \
     -D IMHEX_BUNDLE_DOTNET=OFF \
     -D USE_SYSTEM_LLVM=ON \
