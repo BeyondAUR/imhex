@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/down
 "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
 sha256sums=('711481cc8dfc368d1b88f5d3e8a44d65f23fa43eb9db092599924f3a4cf1aaa2'
             '541eddc8cc427d1aeb749bc455911fccc87f64a7784bd4bbc35ecb7b56c03ad5')
-options=(lto strip)
+options=(!lto)
 
 build() {
   cd "${srcdir}/${_name}"
@@ -36,7 +36,7 @@ build() {
     -D CMAKE_SKIP_RPATH=ON \
     -D IMHEX_OFFLINE_BUILD=ON \
     -D IMHEX_IGNORE_BAD_CLONE=ON \
-    -D IMHEX_STRIP_RELEASE=ON \
+    -D IMHEX_STRIP_RELEASE=OFF \
     -D IMHEX_STRICT_WARNINGS=OFF \
     -D IMHEX_BUNDLE_DOTNET=OFF \
     -D USE_SYSTEM_LLVM=ON \
