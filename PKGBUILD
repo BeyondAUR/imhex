@@ -4,7 +4,7 @@
 _name=ImHex
 pkgname=${_name,,}
 pkgver=1.37.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
@@ -14,7 +14,7 @@ depends=('glfw' 'mbedtls' 'curl' 'dbus'
          'fmt' 'yara' 'capstone')
 makedepends=('git' 'cmake'
              'llvm' 'librsvg' 'nlohmann-json' 'libxrandr'
-             'python' 'cli11' 'dotnet-runtime')
+             'python' 'cli11' 'dotnet-runtime' 'gcc14')
 optdepends=('dotnet-runtime: support for .NET scripts')
 provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
@@ -26,7 +26,7 @@ options=(!lto)
 
 build() {
   cd "${srcdir}/${_name}"
-
+  CC=gcc-14 CXX=g++-14 \
   cmake -B build -S "." \
     -Wno-dev \
     -D CMAKE_BUILD_TYPE=Release \
