@@ -33,6 +33,7 @@ build() {
   CC=gcc CXX=g++ \
   cmake -B build -S "." \
     -Wno-dev \
+    -Wno-deprecated \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_SKIP_RPATH=ON \
