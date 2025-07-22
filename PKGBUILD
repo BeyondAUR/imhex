@@ -29,7 +29,7 @@ prepare() {
   --single-branch \
   --recurse-submodules \
   --shallow-submodules \
-  https://github.com/WerWolv/ImHex.git \
+  -- https://github.com/WerWolv/ImHex.git \
   "${srcdir}/${_name}"
 }
 
