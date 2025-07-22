@@ -4,29 +4,33 @@
 _name=ImHex
 pkgname=${_name,,}
 pkgver=1.37.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
 arch=('x86_64')
-depends=('glfw' 'mbedtls' 'curl' 'dbus'
+depends=('glfw' 'gtk3' 'mbedtls' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal' 'fontconfig'
          'fmt' 'yara' 'capstone')
 makedepends=('git' 'cmake'
              'llvm' 'librsvg' 'nlohmann-json' 'libxrandr'
-             'python' 'cli11' 'dotnet-runtime' 'gcc14')
+             'python' 'cli11' 'dotnet-runtime' 'gcc')
 optdepends=('dotnet-runtime: support for .NET scripts')
 provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v$pkgver/Full.Sources.tar.gz"
-"imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
-sha256sums=('711481cc8dfc368d1b88f5d3e8a44d65f23fa43eb9db092599924f3a4cf1aaa2'
-            '541eddc8cc427d1aeb749bc455911fccc87f64a7784bd4bbc35ecb7b56c03ad5')
+# source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v$pkgver/Full.Sources.tar.gz"
+# "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
+# sha256sums=('711481cc8dfc368d1b88f5d3e8a44d65f23fa43eb9db092599924f3a4cf1aaa2'
+#             '541eddc8cc427d1aeb749bc455911fccc87f64a7784bd4bbc35ecb7b56c03ad5')
 options=(!lto)
+
+prepare() {
+  git clone --branch "v${pkgver}" --single-branch --recurse-submodules https://github.com/WerWolv/ImHex.git "${srcdir}/${_name}"
+}
 
 build() {
   cd "${srcdir}/${_name}"
-  CC=gcc-14 CXX=g++-14 \
+  CC=gcc CXX=g++ \
   cmake -B build -S "." \
     -Wno-dev \
     -D CMAKE_BUILD_TYPE=Release \
