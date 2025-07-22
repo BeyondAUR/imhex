@@ -53,11 +53,7 @@ build() {
     -D CMAKE_POLICY_VERSION_MINIMUM=3.24 \
     -D CMAKE_COMPILE_WARNING_AS_ERROR=OFF
 
-  cmake \
-    -Wno-dev \
-    -Wno-deprecated \
-    --compile-no-warning-as-error \
-    --build build
+  make -C ./build
 }
 
 package() {
