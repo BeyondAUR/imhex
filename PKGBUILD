@@ -25,8 +25,7 @@ conflicts=('imhex-patterns-git')
 options=(!lto)
 
 prepare() {
-  git clone \
-  #--branch "v${pkgver}" \
+  git clone
   --single-branch \
   --recurse-submodules \
   --shallow-submodules \
