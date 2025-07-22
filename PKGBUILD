@@ -34,6 +34,7 @@ build() {
   cmake -B build -S "." \
     -Wno-dev \
     -Wno-deprecated \
+    --compile-no-warning-as-error \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_SKIP_RPATH=ON \
@@ -49,7 +50,7 @@ build() {
     -D USE_SYSTEM_CAPSTONE=ON \
     -D USE_SYSTEM_CLI11=ON \
     -D IMHEX_VERSION="$pkgver" \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.10 \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.24 \
     -D CMAKE_COMPILE_WARNING_AS_ERROR=OFF
 
   cmake --build build
