@@ -25,8 +25,6 @@ sha256sums=('dc4bb8e6a3800d59da284b92f56ca9816a32790aa11121a9a143b1a078c5d8d6'
 options=(!lto)
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override"
-
   cd "${srcdir}/${_name}"
 
   cmake -B build -S "." \
