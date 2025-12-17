@@ -52,6 +52,9 @@ build() {
 }
 
 package() {
+  test -e "$srcdir/ImHex-Patterns" && rm "$srcdir/ImHex-Patterns"
+  ln -s "$srcdir/ImHex-Patterns-ImHex-v$pkgver" "$srcdir/ImHex-Patterns"
+  
   cd "${srcdir}/${_name}"
 
   DESTDIR="$pkgdir" cmake --install build
