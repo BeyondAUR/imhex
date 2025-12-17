@@ -3,13 +3,13 @@
 
 _name=ImHex
 pkgname=${_name,,}
-pkgver=1.37.4
-pkgrel=4
+pkgver=1.38.0
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
 arch=('x86_64')
-depends=('glfw' 'gtk3' 'mbedtls' 'curl' 'dbus'
+depends=('glfw' 'mbedtls' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal' 'fontconfig'
          'fmt' 'yara' 'capstone')
 makedepends=('git' 'cmake'
@@ -18,23 +18,17 @@ makedepends=('git' 'cmake'
 optdepends=('dotnet-runtime: support for .NET scripts')
 provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
-source=("imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
-sha256sums=("541eddc8cc427d1aeb749bc455911fccc87f64a7784bd4bbc35ecb7b56c03ad5")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v$pkgver/Full.Sources.tar.gz"
+        "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
+sha256sums=('dc4bb8e6a3800d59da284b92f56ca9816a32790aa11121a9a143b1a078c5d8d6'
+            'eb211d696f409f3747942d6f7139e56dae76c3c073e1fee0471a3e7ed82b5f28')
 options=(!lto)
 
-prepare() {
-  git clone \
-  --branch master \
-  --single-branch \
-  --recurse-submodules \
-  --shallow-submodules \
-  -- https://github.com/WerWolv/ImHex.git \
-  "${srcdir}/${_name}"
-}
-
 build() {
+  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override"
+
   cd "${srcdir}/${_name}"
-  CC=gcc CXX=g++ \
+
   cmake -B build -S "." \
     -Wno-dev \
     -Wno-deprecated \
@@ -54,14 +48,14 @@ build() {
     -D USE_SYSTEM_CAPSTONE=ON \
     -D USE_SYSTEM_CLI11=ON \
     -D IMHEX_VERSION="$pkgver" \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.24 \
     -D CMAKE_COMPILE_WARNING_AS_ERROR=OFF
 
-  make -C ./build
+  cmake --build build
 }
 
 package() {
   cd "${srcdir}/${_name}"
+
   DESTDIR="$pkgdir" cmake --install build
 
   # Remove updater
